@@ -3,6 +3,9 @@
 #include "Control.h"
 #include "View.h"
 
+
+
+
 int main()
 {
 	
@@ -12,7 +15,7 @@ int main()
 	view->control = control;
 	control->view = view;
 
-	view->CauA();
+	view->MainMenu();
 
 	system("pause");
 	return 0;

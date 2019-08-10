@@ -38,16 +38,24 @@ struct LopTC
 	int sosvMax;
 	int sosvMin;
 	DSDangKy dssvdk;//tro den phan tu dau cua danh sach dang ky
+
+	void InLop();
 };
+
+#define MAX_SIZE_LOP_TC 5000
+
 struct DSLopTC
 {
-	LopTC *lop[5000];
+	LopTC *lop[MAX_SIZE_LOP_TC];
 	int soluonglop;
 
 	//cau a
-	void ThemLopTC(LopTC * lop);
+	void ThemLopTC(LopTC * new_lop);
 	void XoaLopTC(int malop);
-	void SuaLopTC();
+	void InLopTC();
+	LopTC *TimLop(int malop);
+
+	DSLopTC();
 };
 
 struct SinhVien
@@ -65,19 +73,23 @@ struct SinhVien
 
 struct DSSinhVien
 {
-	//LinkedList<SinhVien> sinhvien;
+	LinkedList<SinhVien> * sinhvien;
+
 	//cau b
-	void InDSSVNienKhoa(int nienkhoa);
-	void InDSSVHocKy(int hocky);
-	void InDSSVNhom(int nhom);
-	void InDSSVMaMH(int mamh);
+	
+	LinkedList<SinhVien> GetSinhVien(int nien_khoa);
 
 	//cau c
-	void ThemSinhVien(SinhVien *sv);
+	void ThemSinhVien(SinhVien sv);
 	void XoaSinhVien(int masv);
 	void SuaSinhVien(int masv);
 
-	//cau d
-	void InDSSinhVien(int malop);
+	DSSinhVien();
 };
 
+struct  ModelManager
+{
+	DSSinhVien * dssv = new DSSinhVien();
+	DSLopTC * dsloptc = new DSLopTC();
+
+};

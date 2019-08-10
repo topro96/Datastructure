@@ -1,5 +1,3 @@
-﻿  main.cpp
-  View.cpp
-  Generating Code...
-  qldsv2.vcxproj -> H:\C++ project\Nhi\qldsv2\Debug\qldsv2.exe
-  qldsv2.vcxproj -> H:\C++ project\Nhi\qldsv2\Debug\qldsv2.pdb (Partial PDB)
+﻿  Control.cpp
+model.obj : error LNK2019: unresolved external symbol "public: void __thiscall LinkedList<struct SinhVien>::ThemNode(struct SinhVien)" (?ThemNode@?$LinkedList@USinhVien@@@@QAEXUSinhVien@@@Z) referenced in function "public: void __thiscall DSSinhVien::ThemSinhVien(struct SinhVien)" (?ThemSinhVien@DSSinhVien@@QAEXUSinhVien@@@Z)
+H:\C++ project\Nhi\qldsv2\Debug\qldsv2.exe : fatal error LNK1120: 1 unresolved externals

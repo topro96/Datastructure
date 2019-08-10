@@ -5,6 +5,33 @@
 
 using namespace std;
 
+void View::MainMenu()
+{
+	int luachon;
+	system("cls");
+	cout << "\n================= MENU ===================" << endl;
+	cout << "    1.Quan Ly Danh Sach Lop Tin Chi" << endl;
+	cout << "    2.Quan Ly Danh Sach Sinh Vien" << endl;
+	cout << "    3.Quan Ly Danh Sach Mon Hoc" << endl;
+	cout << "    4.Quan Ly Danh Sach Dang Ky" << endl;
+	cout << "    0.Thoat" << endl;
+	while (1) {
+		cout << "\nNhap lua chon: "; 
+		cin >> luachon;
+
+		switch (luachon) {
+		case 1: MenuLop();
+		case 2: MenuSinhVien();
+		case 3: MenuMonHoc();
+		case 4: MenuDSDK();
+		case 0: exit(0);
+		default:
+			cout << "Lua chon khong phu hop!" << endl;
+		}
+	}
+}
+
+
 LopTC * View::TaoLop()
 {
 	LopTC * lop_tc = new LopTC();
@@ -12,7 +39,8 @@ LopTC * View::TaoLop()
 	cout << "\nMa Lop: ";
 	cin >> lop_tc->maloptc;
 	cout << "\nMa Mon Hoc: ";
-	getline(cin, lop_tc->mamh) ;
+	cin.ignore(1000, '\n');
+	getline(cin, lop_tc->mamh);
 	cout << "\nNien Khoa: ";
 	cin >> lop_tc->nienkhoa;
 	cout << "\nHoc Ky: ";
@@ -25,64 +53,212 @@ LopTC * View::TaoLop()
 	return lop_tc;
 }
 
-LopTC * View::XoaLop()
+void View::MenuLop()
 {
-	DSLopTC &dsloptc;
-	int malop = 0;
-	cout << "\nNhap vao ma lop can xoa: ";
-	cin >> malop;
-	LopTC *del;
+	int luachon;
+	system("cls");
+	cout << "\n============= Quan Ly Danh Sach Lop ==============" << endl;
+	cout << "    1. Them Lop Tin Chi" << endl;
+	cout << "    2. Xoa Lop Tin Chi" << endl;
+	cout << "    3. Chinh Sua Lop Tin Chi" << endl;
+	cout << "    4. In danh sach lop tin chi" << endl;
+	cout << "    0. Menu Chinh" << endl;
+	while (1) {
+		cout << "\nNhap lua chon: ";
+		cin >> luachon;
 
-	for (int i = 0; i < dsloptc.soluonglop; i++)
-	{
-		if (dsloptc.lop[i]->maloptc == malop)
+		switch (luachon) {
+		case 1:
+			control->ThemLopTC();
+			break;
+		case 2:
 		{
-			del = dsloptc.lop[i];
-			for (int j = i + 1; j < dsloptc.soluonglop; j++)
-			{
-				*dsloptc.lop[j] = *dsloptc.lop[j - 1];
-			}
-			//cout << "\nLop da xoa thanh cong";
-			delete del;
-			dsloptc.soluonglop--;
-			system("pause");
+			int malop = 0;
+			cout << "\nMa lop can xoa: ";
+			cin >> malop;
+			control->XoaLopTC(malop);
+		}
+		break;
+		case 3:
+		{
+			int malop = 0;
+			cout << "\nMa lop can sua: ";
+			cin >> malop;
+			control->SuaLopTC(malop);
+		}
+			break;
+		case 4:
+			control->InDSLopTC();
+			break;
+		case 0: MainMenu();
+		default:
+			cout << "Lua chon khong phu hop!" << endl;
 		}
 	}
 }
 
-void View::CauA()
+void View::MenuSinhVien()
 {
-	int lua_chon = 0;
-	cout << "1: Them lop tin chi";
-	cin >> lua_chon;
+	int luachon;
+	system("cls");
+	cout << "\n============= Quan Ly Danh Sach Sinh Vien ==============" << endl;
+	cout << "    1. Them Sinh Vien" << endl;
+	cout << "    2. Xoa Sinh Vien" << endl;
+	cout << "    3. Chinh Sua Sinh Vien" << endl;
+	cout << "    4. In ds sinh vien theo nien khoa" << endl;
+	cout << "    5. In ds sinh vien theo hoc ky" << endl;
+	cout << "    6. In ds sinh vien theo nhom" << endl;
+	cout << "    7. In ds sinh vien theo ma mon hoc" << endl;
+	cout << "    8. In ds sinh vien cua mot lop" << endl;
+	cout << "    0. Menu Chinh" << endl;
 	while (1) {
-		system("cls");
-		cout << "\n=========== QUAN LI LOP HOC =============" << endl;
-		cout << "1. Them Lop tin chi" << endl;
-		cout << "2. Xoa Lop tin chi" << endl;
-		cout << "3. Chinh sua lop tin chi" << endl;
-		cout << "4. In danh sach lop theo nam " << endl;
-		cout << "5. In danh sach tat ca lop tin chi" << endl;
-		cout << "0. Menu Chinh" << endl;
+		cout << "Nhap lua chon: ";
+		cin >> luachon;
 
-		cout << "\nNhap lua chon: ";
-		cin >> lua_chon;
-		switch (lua_chon) {
-		case 1:control->ThemLopTC();
+
+		switch (luachon) {
+		case 1:
+			control->ThemSinhVien();
 			break;
-		case 2: 
-			
+		case 2:
+
 			break;
-		case 3: 
-			
+		case 3:
+
 			break;
-		case 0: 
+		case 4:
+		{
+			int nam_hoc = 0;
+			cout << "\nNhap nam hoc: ";
+			cin >> nam_hoc;
+			control->InDSSV(nam_hoc);
+		}
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		case 8:
+			break;
+		case 0: MainMenu();
+		default:
+			cout << "Lua chon khong phu hop!" << endl;
 		}
 	}
+}
 
-	if (lua_chon == 1)
-	{
-		control->ThemLopTC();
+void View::MenuMonHoc()
+{
+	int luachon;
+	system("cls");
+	cout << "\n============= Quan Ly Danh Sach Mon Hoc ==============" << endl;
+	cout << "    1. Them Mon Hoc" << endl;
+	cout << "    2. Xoa Mon Hoc" << endl;
+	cout << "    3. Chinh Sua Mon Hoc" << endl;
+	cout << "    4. In danh sach mon hoc" << endl;
+	cout << "    0. Menu Chinh" << endl;
+
+	while (1) {
+		cout << "Nhap lua chon: ";
+		cin >> luachon;
+
+		switch (luachon) {
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+			break;
+		case 0: MainMenu();
+		default:
+			cout << "Lua chon khong phu hop!" << endl;
+		}
 	}
+}
+
+void View::MenuDSDK()
+{
+	int luachon;
+	system("cls");
+	cout << "\n============= Quan Ly Danh Sach Dang Ky ==============" << endl;
+	cout << "    1. Dang ky lop tin chi" << endl;
+	cout << "    2. Nhap diem" << endl;
+	cout << "    3. In bang diem mon hoc" << endl;
+	cout << "    4. In diem trung binh" << endl;
+	cout << "    5. In diem tong ket" << endl;
+	cout << "    0. Menu Chinh" << endl;
+
+	while (1) {
+		cout << "Nhap lua chon: ";
+		cin >> luachon;
+
+		switch (luachon) {
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 0: MainMenu();
+		default:
+			cout << "Lua chon khong phu hop!" << endl;
+		}
+	}
+}
+
+SinhVien  View::TaoSinhVien()
+{
+	SinhVien sinhvien = SinhVien();
+
+	cout << "\nNhap ma sinh vien: ";
+	cin.ignore(1000, '\n');
+	getline(cin, sinhvien.masv);
+	cout << "\nNhap ho sinh vien: ";
+	cin.ignore(1000, '\n');
+	getline(cin, sinhvien.ho);
+	cout << "\nNhap ten sinh vien: ";
+	cin.ignore(1000, '\n');
+	getline(cin, sinhvien.ten);
+	cout << "\nNhap phai: ";
+	cin.ignore(1000, '\n');
+	getline(cin, sinhvien.phai);
+	cout << "\nNhap sdt: ";
+	cin.ignore(1000, '\n');
+	getline(cin, sinhvien.sdt);
+	cout << "\nNhap ma lop: ";
+	cin.ignore(1000, '\n');
+	getline(cin, sinhvien.malop);
+	cout << "\nNhap nam hoc: ";
+	cin >> sinhvien.namhoc;
+
+	return sinhvien;
+}
+
+void View::InSinhVien(SinhVien  sv)
+{
+	cout << "\nMa sinh vien: ";
+	cout << sv.masv;
+	cout << "\nHo sinh vien: ";
+	cout << sv.ho;
+	cout << "\nTen sinh vien: ";
+	cout << sv.ten;
+	cout << "\nPhai: ";
+	cout << sv.phai;
+	cout << "\nSdt: ";
+	cout << sv.sdt;
+	cout << "\nMa lop: ";
+	cout << sv.malop;
+	cout << "\nNam hoc: ";
+	cout << sv.namhoc;
 
 }

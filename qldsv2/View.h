@@ -12,7 +12,15 @@ public:
 	LopTC * TaoLop();
 	LopTC * XoaLop();
 	
-	void CauA();
+	void MainMenu();
+	void MenuLop();
+	void View::MenuSinhVien();
+	void View::MenuMonHoc();
+	void View::MenuDSDK();
+
+	SinhVien TaoSinhVien();
+
+	void InSinhVien(SinhVien sv);
 
 };
 

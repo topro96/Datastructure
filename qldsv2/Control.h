@@ -5,13 +5,26 @@
 class Control
 {
 	public:
-	DSLopTC dslop;
+	ModelManager model;
+
 	View *view;
 
 
 	void ThemLopTC();
-	void XoaLopTC();
-	void SuaLopTC();
+	void XoaLopTC(int malop);
+	void SuaLopTC(int malop);
+	void InDSLopTC();
+
+	void ThemSinhVien();
+	void XoaSinhVien();
+	void SuaSinhVien();
+
+	void ThemMonHoc();
+	void xoaMonHoc();
+	void SuaMonHoc();
+
+	//tim kiem sinh vien
+	void InDSSV(int nien_khoa);
 
 	Control();
 	~Control();
