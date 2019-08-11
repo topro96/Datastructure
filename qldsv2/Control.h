@@ -9,22 +9,22 @@ class Control
 
 	View *view;
 
-
+	//LOP TC
 	void ThemLopTC();
 	void XoaLopTC(int malop);
 	void SuaLopTC(int malop);
 	void InDSLopTC();
 
+	//SINH VIEN
 	void ThemSinhVien();
-	void XoaSinhVien();
-	void SuaSinhVien();
-
-	void ThemMonHoc();
-	void xoaMonHoc();
-	void SuaMonHoc();
-
 	//tim kiem sinh vien
 	void InDSSV(int nien_khoa);
+
+
+	//MON HOC
+	void ThemMonHoc();
+	void XoaMonHoc(string mamh);
+	void InDSMH();
 
 	Control();
 	~Control();

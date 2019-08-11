@@ -14,7 +14,11 @@ struct MonHoc
 
 struct DSMonHoc
 {
-	//Tree<MonHoc> monhoc;
+	Tree<MonHoc> * monhoc;
+
+	DSMonHoc();
+
+	void ThemMonHoc(MonHoc new_monhoc);
 };
 
 struct SVDangKy 
@@ -25,7 +29,9 @@ struct SVDangKy
 
 struct DSDangKy 
 {
-	//LinkedList<SVDangKy> svdk;
+	LinkedList<SVDangKy> * svdk;
+
+	DSDangKy();
 };
 
 struct LopTC 
@@ -43,7 +49,6 @@ struct LopTC
 };
 
 #define MAX_SIZE_LOP_TC 5000
-
 struct DSLopTC
 {
 	LopTC *lop[MAX_SIZE_LOP_TC];
@@ -91,5 +96,6 @@ struct  ModelManager
 {
 	DSSinhVien * dssv = new DSSinhVien();
 	DSLopTC * dsloptc = new DSLopTC();
+	DSMonHoc * ds_monhoc = new DSMonHoc();
 
 };

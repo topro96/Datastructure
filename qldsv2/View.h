@@ -9,18 +9,20 @@ public:
 
 	Control * control;
 
-	LopTC * TaoLop();
-	LopTC * XoaLop();
 	
 	void MainMenu();
 	void MenuLop();
-	void View::MenuSinhVien();
-	void View::MenuMonHoc();
-	void View::MenuDSDK();
+	void MenuSinhVien();
+	void MenuMonHoc();
+	void MenuDSDK();
 
+
+
+	LopTC * TaoLop();
 	SinhVien TaoSinhVien();
-
 	void InSinhVien(SinhVien sv);
+	void InMonHoc(MonHoc mh);
+	MonHoc TaoMonHoc();
 
 };
 

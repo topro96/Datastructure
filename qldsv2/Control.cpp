@@ -46,10 +46,33 @@ void Control::ThemSinhVien()
 void Control::InDSSV(int nien_khoa)
 {
 	LinkedList<SinhVien> sv = model.dssv->GetSinhVien(nien_khoa);
-	for (LNode<SinhVien> * head = sv.pHead; head->Next != NULL; head = head->Next)
+	for (LNode<SinhVien> * head = sv.pHead; head != NULL; head = head->Next)
 	{
 		view->InSinhVien(head->data);
 	}
+}
+
+void Control::ThemMonHoc()
+{
+	MonHoc monhoc = view->TaoMonHoc();
+	model.ds_monhoc->ThemMonHoc(monhoc);
+}
+
+void Control::XoaMonHoc(string mamh)
+{
+	long key = GetKey(mamh);
+	model.ds_monhoc->monhoc->DeleteNode(key);
+}
+
+void Control::InDSMH()
+{
+	LinkedList<MonHoc> dsmh = model.ds_monhoc->monhoc->GetNode();
+
+	for (LNode<MonHoc> * head = dsmh.pHead; head != NULL; head = head->Next)
+	{
+		view->InMonHoc(head->data);
+	}
+
 }
 
 Control::Control()

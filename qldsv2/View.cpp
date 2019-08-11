@@ -16,7 +16,7 @@ void View::MainMenu()
 	cout << "    4.Quan Ly Danh Sach Dang Ky" << endl;
 	cout << "    0.Thoat" << endl;
 	while (1) {
-		cout << "\nNhap lua chon: "; 
+		cout << "\nNhap lua chon: ";
 		cin >> luachon;
 
 		switch (luachon) {
@@ -86,7 +86,7 @@ void View::MenuLop()
 			cin >> malop;
 			control->SuaLopTC(malop);
 		}
-			break;
+		break;
 		case 4:
 			control->InDSLopTC();
 			break;
@@ -133,7 +133,7 @@ void View::MenuSinhVien()
 			cin >> nam_hoc;
 			control->InDSSV(nam_hoc);
 		}
-			break;
+		break;
 		case 5:
 			break;
 		case 6:
@@ -166,15 +166,21 @@ void View::MenuMonHoc()
 
 		switch (luachon) {
 		case 1:
-
+			control->ThemMonHoc();
 			break;
 		case 2:
-
-			break;
+		{string mamh;
+		cout << "\nNhap ma mon hoc can xoa: ";
+		cin.ignore(1000, '\n');
+		getline(cin, mamh);
+		control->XoaMonHoc(mamh);
+		}
+		break;
 		case 3:
 
 			break;
 		case 4:
+			control->InDSMH();
 			break;
 		case 0: MainMenu();
 		default:
@@ -262,3 +268,38 @@ void View::InSinhVien(SinhVien  sv)
 	cout << sv.namhoc;
 
 }
+
+void View::InMonHoc(MonHoc mh)
+{
+	cout << "\nMa mon hoc: ";
+	cout << mh.mamh;
+
+	cout << "\nTen mon hoc: ";
+	cout << mh.tenmh;
+
+	cout << "\nSTCLT cua mon hoc: ";
+	cout << mh.stclt;
+
+	cout << "\nSTCTH cua mon hoc: ";
+	cout << mh.stcth;
+}
+
+MonHoc View::TaoMonHoc()
+{
+	MonHoc monhoc = MonHoc();
+	cout << "\nNhap ma mon hoc: ";
+	cin.ignore(1000, '\n');
+	getline(cin, monhoc.mamh);
+
+	cout << "\nNhap ten mon hoc: ";
+	cin.ignore(1000, '\n');
+	getline(cin, monhoc.tenmh);
+
+	cout << "\nNhap STCLT cua mon hoc: ";
+	cin >> monhoc.stclt;
+
+	cout << "\nNhap STCTH cua mon hoc: ";
+	cin >> monhoc.stcth;
+	return monhoc;
+}
+

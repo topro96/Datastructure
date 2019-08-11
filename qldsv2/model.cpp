@@ -108,3 +108,21 @@ DSSinhVien::DSSinhVien()
 {
 	sinhvien = new LinkedList<SinhVien>();
 }
+
+DSMonHoc::DSMonHoc()
+{
+	monhoc = new Tree<MonHoc>();
+}
+
+
+
+void DSMonHoc::ThemMonHoc(MonHoc new_monhoc)
+{
+	long key = GetKey(new_monhoc.mamh);
+	monhoc->Insert(key, new_monhoc);
+}
+
+DSDangKy::DSDangKy()
+{
+	svdk = new LinkedList<SVDangKy>();
+}
